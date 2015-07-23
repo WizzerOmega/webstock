@@ -2,14 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Client;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use Illuminate\Foundation\Validation\validate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\MessageBag;
 
 class ClientController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +29,9 @@ class ClientController extends Controller
      */
     public function index()
     {
-        //
+        $client = new Client;
+        $clients = $client->all();
+        return view('client.index')->with('clients', $clients);
     }
 
     /**
@@ -87,7 +101,9 @@ class ClientController extends Controller
      */
     public function edit($id)
     {
-        //
+        $client = new Client;
+        $client->getById($id);
+        return view('client.edit')->with('client', $client);
     }
 
     /**
@@ -110,6 +126,8 @@ class ClientController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $client = new Client;
+        $client->deleteById($id);
+        return Redirect::to('client');
     }
 }

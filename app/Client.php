@@ -20,6 +20,11 @@ class Client extends Model
     public function getById($idCli)
     {
         return Client::findOrFail($idCli);
+    }
 
+    public function deleteById($idCli)
+    {
+        $client = $this->getById($idCli);
+        $client->delete();
     }
 }
