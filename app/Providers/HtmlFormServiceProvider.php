@@ -32,10 +32,9 @@ class HtmlFormServiceProvider extends ServiceProvider
 
     private function registerFormTextField()
     {
-        FormBuilder::macro('textField', function($name, $errors, $label, $labelOptions=array(), $inputOptions=array(), $inputClass)
+        FormBuilder::macro('textField', function($type, $name, $errors, $label, $labelOptions=array(), $inputOptions=array(), $inputClass)
         {
             $valeur = \Request::old($name) ? \Request::old($name) : null;
-            array_key_exists('class', $labelOptions) ? $labelOptions['class'] .= ' control-label' : $labelOptions['class'] = 'control-label';
             $inputOptions['class'] = 'form-control';
             return sprintf('
                 <div class="form-group">
@@ -45,7 +44,7 @@ class HtmlFormServiceProvider extends ServiceProvider
                     </div>
                 </div>',
                 FormBuilder::label($name, $label, $labelOptions),
-                FormBuilder::text($name, $valeur, $inputOptions),
+                $type == 'email' ? FormBuilder::email($name, $valeur, $inputOptions) : FormBuilder::text($name, $valeur, $inputOptions),
                 $errors->first($name, '<small class="help-block">:message</small>')
             );
         });

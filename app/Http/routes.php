@@ -34,4 +34,6 @@ Route::get('api/client/{id}', 'Api\ApiClientController@getById');
 
 Route::resource('home', 'HomeController');
 Route::resource('client', 'ClientController');
+Route::resource('fournisseur', 'FournisseurController');
+Route::resource('commande', 'CommandeController');
 

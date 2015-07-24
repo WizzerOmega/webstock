@@ -54,11 +54,11 @@ class ClientController extends Controller
     {
         if ($this->validate($request, [
             'raison_sociale' => 'required|max:50',
+            'num_siret' => 'required|min:14|max:14',
             'adresse_1' => 'required|max:38',
             'adresse_2' => 'max:38',
             'adresse_3' => 'max:38',
-            'adr4' => 'max:38',
-            'codep' => 'required|min:5|max:5',
+            'code_postal' => 'required|min:5|max:5',
             'ville' => 'required|max:50',
             'email' => 'required|email'
         ])->fails()) {
