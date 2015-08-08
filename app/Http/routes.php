@@ -29,6 +29,8 @@ Route::get('api/produit/{id}', 'Api\ApiProduitController@getById');
 Route::get('api/tproduit/all', 'Api\ApiProduitController@getAllTypeProduit');
 Route::get('api/produit/all/categ/{id}', 'Api\ApiProduitController@getAllByTypeProduit');
 
+Route::get('api/rdv/all', 'Api\ApiRdvController@getAll');
+Route::get('api/rdv/{id}', 'Api\ApiRdvController@getById');
 Route::get('api/client/all', 'Api\ApiClientController@getAll');
 Route::get('api/client/{id}', 'Api\ApiClientController@getById');
 

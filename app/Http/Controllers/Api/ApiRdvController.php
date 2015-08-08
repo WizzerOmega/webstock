@@ -3,16 +3,16 @@
 namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
-use App\Client;
+use App\Rdv;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class ApiClientController extends Controller
+class ApiRdvController extends Controller
 {
     public function getAll()
     {
-        $cli = new Client;
-        $results = $cli->getAll();
+        $rdv = new Rdv;
+        $results = $rdv->getAll();
 
         return Response()->json(
             $results->toArray(),
@@ -20,10 +20,10 @@ class ApiClientController extends Controller
         );
     }
 
-    public function getById($idCli)
+    public function getById($idRdv)
     {
-        $cli = new Client;
-        $result = $cli->getById($idCli);
+        $rdv = new Rdv;
+        $result = $rdv->getById($idRdv);
 
         return Response()->json(
             $result->toArray(),
