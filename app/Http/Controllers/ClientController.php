@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\Client;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
-use Illuminate\Foundation\Validation\validate;
+use Illuminate\Contracts\Validation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\MessageBag;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Validator;
 
 class ClientController extends Controller
 {
@@ -52,7 +54,7 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        if ($this->validate($request, [
+        $validator = Validator::make($request->all(), [
             'raison_sociale' => 'required|max:50',
             'num_siret' => 'required|min:14|max:14',
             'adresse_1' => 'required|max:38',
@@ -60,25 +62,28 @@ class ClientController extends Controller
             'adresse_3' => 'max:38',
             'code_postal' => 'required|min:5|max:5',
             'ville' => 'required|max:50',
-            'email' => 'required|email'
-        ])->fails()) {
+            'email' => 'required|email',
+            'tel' => 'min:10|max:50',
+            'fax' => 'min:10|max:50'
+        ]);
+        if ($validator->fails()) {
             return Redirect::to('client/create')
-                ->withErrors($this->validate->errors())
+                ->withErrors($validator->errors())
                 ->withInput();
         } else {
             $client = new Client;
-            $client->code_cli = 'CL00' . date('-Y-m-') . strtoupper(substr(Input::get('rsociale'),0,5));
-            $client->rs_cli = Input::get('rsociale');
-            $client->adr1_cli = Input::get('adr1');
-            $client->adr2_cli = Input::get('adr2');
-            $client->adr3_cli = Input::get('adr3');
-            $client->cp_cli = Input::get('codep');
+            $client->num_cli = 'CL00' . date('-Y-m-') . strtoupper(substr(Input::get('raison_sociale'),0,5));
+            $client->rs_cli = Input::get('raison_sociale');
+            $client->adr1_cli = Input::get('adresse_1');
+            $client->adr2_cli = Input::get('adresse_2');
+            $client->adr3_cli = Input::get('adresse_3');
+            $client->cp_cli = Input::get('code_postal');
             $client->ville_cli = Input::get('ville');
             $client->mail_cli = Input::get('email');
             $client->tel_cli = Input::get('tel');
             $client->fax_cli = Input::get('fax');
             $client->save();
-            return Redirect::to('client');  
+            return Redirect::to('client.index');
         }
     }
 
