@@ -65,7 +65,7 @@ class HtmlFormServiceProvider extends ServiceProvider
             return '<a href="javascript:history.back()" class="btn btn-primary">
                     <span class="glyphicon glyphicon-back-arrow-left"></span> Retour
                 </a>';
-        });         
+        });
     }
 
 }

@@ -56,7 +56,7 @@ class ClientController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'raison_sociale' => 'required|max:50',
-            'num_siret' => 'required|min:14|max:14',
+            'numero_siret' => 'required|min:14|max:14',
             'adresse_1' => 'required|max:38',
             'adresse_2' => 'max:38',
             'adresse_3' => 'max:38',
