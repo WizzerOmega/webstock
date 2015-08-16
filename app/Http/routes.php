@@ -20,6 +20,9 @@ Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
 Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
+Route::get('api/stat/all', 'Api\ApiStatController@getAll');
+Route::get('api/stat/detail', 'Api\ApiStatController@getDetail');
+Route::get('api/stat/mensuel', 'Api\ApiStatController@getStatMensuel');
 
 Route::get('api/commande/all', 'Api\ApiCommandeController@getAll');
 Route::get('api/commande/{id}', 'Api\ApiCommandeController@getById');
@@ -40,3 +43,4 @@ Route::resource('client', 'ClientController');
 Route::resource('fournisseur', 'FournisseurController');
 Route::resource('commande', 'CommandeController');
 Route::resource('produit', 'ProduitController');
+Route::resource('stat', 'StatController');

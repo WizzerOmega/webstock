@@ -31,8 +31,9 @@ class Commande extends Model
                     ->join('ligne_commande', 'ligne_commande.ID_LIGNE', '=', 'composer.ID_LIGNE')
                     ->join('associer', 'associer.ID_LIGNE', '=', 'ligne_commande.ID_LIGNE')
                     ->join('produit', 'produit.ID_PROD', '=', 'associer.ID_PROD')
-                    ->select('NUM_PROD', 'LIB_PROD', 'NUM_CLI', 'RS_CLI', DB::raw('SUM(composer.MONTANT)'), 'DATE_COM', 'DATE_LIVRAISON_COM')
-                    ->where('NUM_COM', $numCmd)->get();
+                    ->select('client.NUM_CLI', 'client.ID_CLI', 'client.RS_CLI', 'client.ADR1_CLI', 'client.ADR2_CLI', 'client.ADR3_CLI', 'client.CP_CLI', 'client.VILLE_CLI', 'commande.NUM_COM', 'ligne_commande.ID_LIGNE', 'produit.NUM_PROD', 'produit.LIB_PROD', 'produit.PRIX_PROD', 'ligne_commande.QTE_LIGNE', DB::raw('SUM(composer.MONTANT)'), 'commande.DATE_COM', 'commande.DATE_LIVRAISON_COM')
+                    ->groupBy('client.NUM_CLI', 'client.ID_CLI', 'client.RS_CLI', 'client.ADR1_CLI', 'client.ADR2_CLI', 'client.ADR3_CLI', 'client.CP_CLI', 'client.VILLE_CLI', 'commande.NUM_COM', 'ligne_commande.ID_LIGNE', 'produit.NUM_PROD', 'produit.LIB_PROD', 'produit.PRIX_PROD', 'ligne_commande.QTE_LIGNE', 'commande.DATE_COM', 'commande.DATE_LIVRAISON_COM')
+					->where('NUM_COM', $numCmd)->get();
     }
 
 }
