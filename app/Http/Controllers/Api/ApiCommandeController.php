@@ -30,4 +30,15 @@ class ApiCommandeController extends Controller
             200
         );
     }
+
+    public function getDetailByNum($numCmd)
+    {
+        $cmd = new Commande;
+        $result = $cmd->getDetailByNum($numCmd);
+
+        return Response()->json(
+            $result,
+            200
+        );
+    }
 }

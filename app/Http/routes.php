@@ -23,6 +23,7 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
 Route::get('api/commande/all', 'Api\ApiCommandeController@getAll');
 Route::get('api/commande/{id}', 'Api\ApiCommandeController@getById');
+Route::get('api/commande/detail/{num}', 'Api\ApiCommandeController@getDetailByNum');
 
 Route::get('api/produit/all', 'Api\ApiProduitController@getAll');
 Route::get('api/produit/{id}', 'Api\ApiProduitController@getById');
