@@ -38,7 +38,7 @@ class Stat extends Model
 		->join('composer', 'composer.ID_COM', '=', 'commande.ID_COM')
 		->join('associer', 'associer.ID_LIGNE', '=', 'composer.ID_LIGNE')
 		->join('produit', 'produit.ID_PROD', '=', 'associer.ID_PROD')
-		->select(DB::raw('SUM(QTE_PRO_ART) as QTE'), DB::raw('MONTH(DATE_COM)'), DB::raw('YEAR(DATE_COM)'))
-		->groupBy(DB::raw('MONTH(DATE_COM)'), DB::raw('YEAR(DATE_COM)'))->get();
+		->select(DB::raw('SUM(QTE_PRO_ART) as QTE'), DB::raw('MONTH(commande.DATE_COM) as MOIS'))
+		->groupBy(DB::raw('MONTH(DATE_COM)'))->get();
     }
 }
