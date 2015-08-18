@@ -1,7 +1,7 @@
 @extends("layout")
 @section("content")
 <div>
-	<table id="tabListeFournisseur" class="table text-center">
+	<table id="tabListeFournisseur" class="table table-stripped text-center">
 		<thead>
 			<tr>
 				<th>Numéro</th>
@@ -18,7 +18,8 @@
 					<td>{!! $produit->NUM_PROD !!}</td>
 					<td>{!! $produit->LIB_PROD !!}</td>
 					<td>{!! $produit->PRIX_PROD !!}</td>
-					<td>{!! $produit->QTE_PROD !!}</td><td>
+					<td>{!! $produit->QTE_PROD !!}</td>
+					<td>
 						<a href="{!! URL::route('produit.show', $produit->ID_PROD) !!}" data-toggle="modal" data-target="#detailProduit">
 							<button type="button" class="btn btn-default btn-mini">
   								<span class="glyphicon glyphicon-search"></span>

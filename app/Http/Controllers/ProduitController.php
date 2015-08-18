@@ -68,7 +68,6 @@ class ProduitController extends Controller
 
         $prod = new Produit;
         $result = $prod->getById($idProd);
-
         return view('produit.show')->with('produit', $result);
     }
 

@@ -52,7 +52,25 @@ class FournisseurController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if ($this->create_validation->fails()) {    
+          return Redirect::to('fournisseur/create')
+          ->withErrors($this->create_validation->errors())
+          ->withInput();
+        } else {
+            $fournisseur = new Fournisseur;
+            $fournisseur->code_fou = 'FO00' . date('-Y-m-') . substr(Input::get('rsociale'),0,5);
+            $fournisseur->rs_fou = Input::get('raison_sociale');
+            $fournisseur->adr1_fou = Input::get('adr1');
+            $fournisseur->adr2_fou = Input::get('adr2');
+            $fournisseur->adr3_fou = Input::get('adr3');
+            $fournisseur->cp_fou = Input::get('codep');
+            $fournisseur->ville_fou = Input::get('ville');
+            $fournisseur->mail_fou = Input::get('email');
+            $fournisseur->tel_fou = Input::get('tel');
+            $fournisseur->fax_fou = Input::get('fax');
+            $fournisseur->save();
+            return Redirect::to('fournisseur');
+        }
     }
 
     /**

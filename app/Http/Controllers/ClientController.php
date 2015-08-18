@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Client;
+use App\Commande;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use Illuminate\Contracts\Validation;
+use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\MessageBag;
-use Illuminate\Foundation\Validation\ValidatesRequests;
 use Validator;
 
 class ClientController extends Controller
@@ -95,7 +96,11 @@ class ClientController extends Controller
      */
     public function show($id)
     {
-        //
+        $cmd = new Commande;
+        $commandes = $cmd->getAllByClient($id);
+        /*$cli = new Client;
+        $client = $cli->getById($id);*/
+        return view('client.show')->with('commandes', $commandes);
     }
 
     /**
@@ -106,8 +111,8 @@ class ClientController extends Controller
      */
     public function edit($id)
     {
-        $client = new Client;
-        $client->getById($id);
+        $cli = new Client;
+        $client = $cli->getById($id);
         return view('client.edit')->with('client', $client);
     }
 

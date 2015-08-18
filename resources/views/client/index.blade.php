@@ -1,6 +1,6 @@
 @extends("layout")
 @section("content")
-<div>
+
 	<table id="tabListeClient" class="table text-center">
 		<thead>
 			<tr>
@@ -32,6 +32,13 @@
 					<td>{{ $client->TEL_CLI }}</td>
 					<td>{{ $client->FAX_CLI }}</td>
 					<td>
+						<a href="{!! URL::route('client.show', $client->ID_CLI) !!}" data-toggle="modal" data-target="#detailClient">
+							<button type="button" class="btn btn-default btn-mini">
+  								<span class="glyphicon glyphicon-search"></span>
+							</button>
+						</a>
+					</td>
+					<td>
 						<a href="{{ URL::route('client.edit', $client->ID_CLI) }}">
 							<button type="button" class="btn btn-default btn-mini">
   								<span class="glyphicon glyphicon-pencil"></span>
@@ -49,5 +56,9 @@
 			 @endforeach
 		</tbody>
 	</table>
- </div>
 @stop
+<div id="detailClient" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content"></div>
+    </div> <!-- /.modal-dialog -->
+</div>

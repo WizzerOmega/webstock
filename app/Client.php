@@ -13,8 +13,6 @@ class Client extends Model
     public function getAll()
     {
         return Client::all();
-        //return DB::select('select * from v_commande');
-        //DB::view('v_commande')->get();
     }
 
     public function getById($idCli)

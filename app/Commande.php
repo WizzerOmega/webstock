@@ -36,4 +36,11 @@ class Commande extends Model
 					->where('NUM_COM', $numCmd)->get();
     }
 
+    public function getAllByClient($idCli)
+    {
+        return Commande::where('ID_CLI', $idCli)->get();
+        //return DB::select('select * from v_commande');
+        //DB::view('v_commande')->get();
+    }
+
 }

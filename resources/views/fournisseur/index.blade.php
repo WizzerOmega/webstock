@@ -1,7 +1,7 @@
 @extends("layout")
 @section("content")
-<div>
-	<table id="tabListeFournisseur" class="table text-center">
+<h1 class="page-header">Liste des fournisseurs</h1>
+	<table id="tabListeFournisseur" class="table table-striped">
 		<thead>
 			<tr>
 				<th>Code</th>
@@ -32,8 +32,8 @@
 					<td>{!! $fournisseur->MAIL_FOU !!}</td>
 					<td>{!! $fournisseur->TEL_FOU !!}</td>
 					<td>{!! $fournisseur->FAX_FOU !!}</td>
-					<td>
-						<a href="{{ URL::route('fournisseur.show', $fournisseur->ID_FOU) }}">
+					<td>{!! $fournisseur->QTE_PROD !!}</td><td>
+						<a href="{!! URL::route('fournisseur.show', $fournisseur->ID_FOU) !!}" data-toggle="modal" data-target="#detailFournisseur">
 							<button type="button" class="btn btn-default btn-mini">
   								<span class="glyphicon glyphicon-search"></span>
 							</button>
@@ -56,5 +56,9 @@
 			 @endforeach
 		 </tbody>
 	</table>
- </div>
 @stop
+<div id="detailFournisseur" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content"></div>
+    </div> <!-- /.modal-dialog -->
+</div>
