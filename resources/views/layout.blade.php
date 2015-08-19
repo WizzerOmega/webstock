@@ -52,7 +52,7 @@
 						<li><a href="{{ URL::route('produit.create') }}">Nouveau produit</a></li>
 					</ul>
 				</div>
-				<div class="col-sm-9 col-md-10" style="padding: 20px;">
+				<div class="col-sm-9 col-md-8" style="padding: 20px;">
 					@include('flash')
 					@yield('content')
 				</div>

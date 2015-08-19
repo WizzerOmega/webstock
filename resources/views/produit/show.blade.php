@@ -6,6 +6,9 @@
 </div>
 <div class="modal-body">
     <div class="container-fluid">
-        {!! $produit->LIB_PROD !!}
+    <?php var_dump($detailP);die;?>
+        @foreach($detailP as $commande)
+			<p>{!! $commande->LIB_MAT !!}</p>
+        @endforeach
     </div>
 </div>

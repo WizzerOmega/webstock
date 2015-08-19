@@ -2,24 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests;
-use App\Matiere;
-use App\Produit;
 use Illuminate\Http\Request;
 
-class ProduitController extends Controller
-{
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
 
+class CommandeClientController extends Controller
+{
     /**
      * Display a listing of the resource.
      *
@@ -27,9 +16,7 @@ class ProduitController extends Controller
      */
     public function index()
     {
-        $produit = new Produit;
-        $produits = $produit->getAll();
-        return view('produit.index')->with('produits', $produits);
+        //
     }
 
     /**
@@ -39,11 +26,7 @@ class ProduitController extends Controller
      */
     public function create()
     {
-        $produit = new Produit;
-        $produits = $produit->getAll();
-        $matiere = new Matiere;
-        $matieres = $matiere->getAll();
-        return view('produit.create')->with('produits', $produits)->with('matieres', $matieres);
+        //
     }
 
     /**
@@ -54,7 +37,7 @@ class ProduitController extends Controller
      */
     public function store(Request $request)
     {
-        
+        //
     }
 
     /**
@@ -65,9 +48,15 @@ class ProduitController extends Controller
      */
     public function show($id)
     {
-        $prod = new Produit;
-        $detail = $prod->getDetailById($id);
-        return view('produit.show')->with('detailP', $detail);
+        $cmd = new Commande;
+        $detailCom = $cmd->find($id);
+        $cmdClis = $cmdCli->getProduitCommande($id);
+        $client = new Client;
+        $detailCli = $client->getById($idCli);
+        return View::make('commandecli.show')
+                            ->with('detailCom', $detailCom)
+                            ->with('cmdClis', $cmdClis)
+                            ->with('detailCli', $detailCli);
     }
 
     /**
@@ -78,8 +67,7 @@ class ProduitController extends Controller
      */
     public function edit($id)
     {
-        $prod = new Produit;
-        $detail = $prod->getDetailById($id);
+        //
     }
 
     /**

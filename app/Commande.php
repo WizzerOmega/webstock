@@ -38,9 +38,19 @@ class Commande extends Model
 
     public function getAllByClient($idCli)
     {
-        return Commande::where('ID_CLI', $idCli)->get();
+        return Commande::where('ID_CLI', $idCli)->orderBy('DATE_COM')->get();
         //return DB::select('select * from v_commande');
         //DB::view('v_commande')->get();
+    }
+
+    public function getProduitByCmd($idCmd)
+    {
+        return DB::table('commande')
+            ->from($this->table)
+            ->join('associer', 'associer.id_com_cli', '=', 'commande.id_com_cli')
+            ->join('produit', 'produit.id_prod', '=', 'associer.id_prod')
+            ->where('commande.id_com_cli', '=', $idCmd)
+            ->get();
     }
 
 }
