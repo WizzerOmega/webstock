@@ -50,6 +50,8 @@
 						<li><a href="{{ URL::route('client.create') }}">Nouveau client</a></li>
 						<li><a href="{{ URL::route('produit.index') }}">Liste des produits</a></li>
 						<li><a href="{{ URL::route('produit.create') }}">Nouveau produit</a></li>
+						<li><a href="{{ URL::route('matiere.index') }}">Liste des matières</a></li>
+						<li><a href="{{ URL::route('matiere.create') }}">Nouvelle matière</a></li>
 					</ul>
 				</div>
 				<div class="col-sm-9 col-md-8" style="padding: 20px;">

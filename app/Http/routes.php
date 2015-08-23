@@ -38,9 +38,12 @@ Route::get('api/rdv/{id}', 'Api\ApiRdvController@getById');
 Route::get('api/client/all', 'Api\ApiClientController@getAll');
 Route::get('api/client/{id}', 'Api\ApiClientController@getById');
 
+Route::get('matiere/association', 'MatiereController@association');
+
 Route::resource('home', 'HomeController');
 Route::resource('client', 'ClientController');
 Route::resource('fournisseur', 'FournisseurController');
 Route::resource('commandeClient', 'CommandeClientController');
 Route::resource('produit', 'ProduitController');
+Route::resource('matiere', 'MatiereController');
 Route::resource('stat', 'StatController');

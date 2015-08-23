@@ -9,6 +9,7 @@ class Fournisseur extends Model
 	protected $table = 'fournisseur';
 	public $timestamps = false;
 	protected $primaryKey = 'ID_FOU';
+	public $incrementing = true;
 
 	public function getAll()
 	{

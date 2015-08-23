@@ -6,9 +6,12 @@
 </div>
 <div class="modal-body">
     <div class="container-fluid">
-    <?php var_dump($detailP);die;?>
-        @foreach($detailP as $commande)
-			<p>{!! $commande->LIB_MAT !!}</p>
-        @endforeach
+        @if ($msg != '')
+            <p>{!! $msg !!}</p>
+        @else
+             @foreach($detailP as $commande)
+                <p>{!! $commande->LIB_MAT !!}</p>
+            @endforeach
+        @endif
     </div>
 </div>

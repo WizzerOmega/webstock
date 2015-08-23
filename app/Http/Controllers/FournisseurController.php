@@ -3,12 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Fournisseur;
+use App\Commande;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
-use Illuminate\Foundation\Validation\validate;
+use Illuminate\Contracts\Validation;
+use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\MessageBag;
+use Validator;
 
 class FournisseurController extends Controller
 {
@@ -52,18 +56,29 @@ class FournisseurController extends Controller
      */
     public function store(Request $request)
     {
-        if ($this->create_validation->fails()) {    
-          return Redirect::to('fournisseur/create')
-          ->withErrors($this->create_validation->errors())
-          ->withInput();
+        $validator = Validator::make($request->all(), [
+            'raison_sociale' => 'required|max:50',
+            'adresse_1' => 'required|max:38',
+            'adresse_2' => 'max:38',
+            'adresse_3' => 'max:38',
+            'code_postal' => 'required|min:5|max:5',
+            'ville' => 'required|max:50',
+            'email' => 'required|email',
+            'tel' => 'min:10|max:50',
+            'fax' => 'min:10|max:50'
+        ]);
+        if ($validator->fails()) {
+            return Redirect::to('fournisseur/create')
+                ->withErrors($validator->errors())
+                ->withInput();
         } else {
             $fournisseur = new Fournisseur;
-            $fournisseur->code_fou = 'FO00' . date('-Y-m-') . substr(Input::get('rsociale'),0,5);
+            $fournisseur->num_fou = 'FO' . date('-Y-m-') . substr(Input::get('rsociale'),0,5);
             $fournisseur->rs_fou = Input::get('raison_sociale');
-            $fournisseur->adr1_fou = Input::get('adr1');
-            $fournisseur->adr2_fou = Input::get('adr2');
-            $fournisseur->adr3_fou = Input::get('adr3');
-            $fournisseur->cp_fou = Input::get('codep');
+            $fournisseur->adr1_fou = Input::get('adresse_1');
+            $fournisseur->adr2_fou = Input::get('adresse_2');
+            $fournisseur->adr3_fou = Input::get('adresse_3');
+            $fournisseur->cp_fou = Input::get('code_postal');
             $fournisseur->ville_fou = Input::get('ville');
             $fournisseur->mail_fou = Input::get('email');
             $fournisseur->tel_fou = Input::get('tel');

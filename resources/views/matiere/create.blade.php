@@ -1,13 +1,13 @@
 @extends("layout")
 @section("content")
-	<h1>Ajout d'un produit</h1>
-		{!! Form::open(array('route' => 'produit.store', 'class' => 'form-horizontal')) !!}
+	<h1>Ajout d'une matière première</h1>
+		{!! Form::open(array('route' => 'matiere.store', 'class' => 'form-horizontal')) !!}
 		{!! csrf_field() !!}
 		<div class="form-group">
-			{!! Form::label('matiere', 'Matière') !!}
-			<select id ="matiere" name="matiere" class ="form-control">
-				@foreach($matieres as $matiere)
-					<option value="{{ $matiere->ID_MAT }}">{!! $matiere->LIB_MAT !!}</option>
+			{!! Form::label('fournisseur', 'Fournisseur') !!}
+			<select id ="fournisseur" name="fournisseur" class ="form-control">
+				@foreach($fournisseurs as $fournisseur)
+					<option value="{{ $fournisseur->ID_FOU }}">{!! $fournisseur->RS_FOU !!}</option>
 				@endforeach
 			</select>
 		</div>

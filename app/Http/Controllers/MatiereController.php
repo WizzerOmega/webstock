@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
+use App\Fournisseur;
 use App\Http\Controllers\Controller;
+use App\Http\Requests;
+use App\Matiere;
+use Illuminate\Http\Request;
 
 class MatiereController extends Controller
 {
@@ -26,7 +27,9 @@ class MatiereController extends Controller
      */
     public function create()
     {
-        //
+        $fournisseur = new Fournisseur;
+        $fournisseurs = $fournisseur->getAll();
+        return view('matiere.create')->with('fournisseurs', $fournisseurs);
     }
 
     /**
@@ -81,6 +84,11 @@ class MatiereController extends Controller
      * @return Response
      */
     public function destroy($id)
+    {
+        //
+    }
+
+    public function association()
     {
         //
     }

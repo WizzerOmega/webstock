@@ -9,6 +9,7 @@ use App\Http\Requests;
 use Illuminate\Contracts\Validation;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\MessageBag;
 use Validator;
@@ -84,7 +85,7 @@ class ClientController extends Controller
             $client->tel_cli = Input::get('tel');
             $client->fax_cli = Input::get('fax');
             $client->save();
-            return Redirect::to('client.index');
+            return Redirect::to('client');
         }
     }
 

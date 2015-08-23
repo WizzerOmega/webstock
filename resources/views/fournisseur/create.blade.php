@@ -1,7 +1,7 @@
 @extends("layout")
 @section("content")
 	<h1 class="page-header" style="margin-top: 0px;">Création d'un fournisseur</h1>
-		{!! Form::open(array('route' => 'client.store', 'class' => 'form-horizontal')) !!}
+		{!! Form::open(array('route' => 'fournisseur.store', 'class' => 'form-horizontal')) !!}
 		{!! csrf_field() !!}
 		{!! Form::textField('text', 'raison_sociale', $errors, 'Raison sociale', null, array('required'),'') !!}
 		{!! Form::textField('text', 'adresse_1', $errors, 'Adresse 1', null, array('required' => 'required'),'') !!}

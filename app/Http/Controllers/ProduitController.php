@@ -67,7 +67,19 @@ class ProduitController extends Controller
     {
         $prod = new Produit;
         $detail = $prod->getDetailById($id);
-        return view('produit.show')->with('detailP', $detail);
+        if (!empty($detail)) {
+            $msg = '';
+            return view('produit.show')->with('detailP', $detail)->with('msg', $msg);
+        } else {
+            $msg = 'Aucune nomenclature n\'est disponible pour ce produit';
+            return view('produit.show')->with('msg', $msg);
+        }
+        
+
+        /*$produit = new Produit;
+        $prod = $produit->find($idProduit);
+        $pieces = $produit->getNomenclatureProduit($idProduit);
+        return View::make('produit.show')->with('pieces', $pieces)->with('prod', $prod);*/
     }
 
     /**
@@ -80,6 +92,13 @@ class ProduitController extends Controller
     {
         $prod = new Produit;
         $detail = $prod->getDetailById($id);
+        if (!empty($detail)) {
+            $msg = '';
+            return view('produit.show')->with('detailP', $detail)->with('msg', $msg);
+        } else {
+            $msg = 'Aucune nomenclature n\'est disponible pour ce produit';
+            return view('produit.show')->with('msg', $msg);
+        }
     }
 
     /**
