@@ -20,6 +20,8 @@ Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
 Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
+Route::get('api/auth/x/{login}/y/{mdp}', 'Api\ApiAuthController@getByLoginMdp');
+
 Route::get('api/stat/all', 'Api\ApiStatController@getAll');
 Route::get('api/stat/detail', 'Api\ApiStatController@getDetail');
 Route::get('api/stat/mensuel', 'Api\ApiStatController@getStatMensuel');
