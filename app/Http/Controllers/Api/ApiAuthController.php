@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
-use App\User;
+use App\Representant;
 use Hash;
 use Auth;
 use App\Http\Requests;
@@ -12,19 +12,13 @@ use App\Http\Controllers\Controller;
 class ApiAuthController extends Controller
 {
 
-    public function getByLoginMdp($login, $mdp)
+    public function getByLoginMdp($email, $mdp)
     {
-        $user = array(
-                'email' => $login, 
-                'password' => $mdp
-            );
-        
-        Auth::attempt($user);
-        $user = Auth::user();
-        Auth::logout();
+        $rep = new Representant;
+        $representant = $rep->getByMailMdp($email, $mdp);
 
         return Response()->json(
-            $user,
+            $representant,
             200
         );
     }
