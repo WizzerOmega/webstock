@@ -42,8 +42,26 @@ Route::get('api/client/{id}', 'Api\ApiClientController@getById');
 
 Route::get('matiere/association', 'MatiereController@association');
 
+Route::get('profil', ['uses' => 'UsersController@edit', 'as' => 'profil']);
+Route::post('profil', ['uses' => 'UsersController@update']);
+
+Route::controllers([
+	'auth' => 'Auth\AuthController',
+	'password' => 'Auth\PasswordController',
+]);
+
+
+
+
 Route::resource('home', 'HomeController');
 Route::resource('client', 'ClientController');
+
+Route::get('profil', ['uses' => 'UsersController@edit', 'as' => 'profil']);
+Route::post('profil', ['uses' => 'UsersController@update']);
+Route::controllers([
+	'auth' => 'Auth\AuthController',
+	'password' => 'Auth\PasswordController',
+]);
 Route::resource('fournisseur', 'FournisseurController');
 Route::resource('commandeClient', 'CommandeClientController');
 Route::resource('produit', 'ProduitController');

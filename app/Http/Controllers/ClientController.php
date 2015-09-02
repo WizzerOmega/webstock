@@ -99,9 +99,9 @@ class ClientController extends Controller
     {
         $cmd = new Commande;
         $commandes = $cmd->getAllByClient($id);
-        /*$cli = new Client;
-        $client = $cli->getById($id);*/
-        return view('client.show')->with('commandes', $commandes);
+        $cli = new Client;
+        $client = $cli->getById($id);
+        return view('client.show')->with('commandes', $commandes)->with('client', $client);
     }
 
     /**

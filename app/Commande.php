@@ -38,7 +38,11 @@ class Commande extends Model
 
     public function getAllByClient($idCli)
     {
-        return Commande::where('ID_CLI', $idCli)->orderBy('DATE_COM')->get();
+        return DB::table('commande')
+                        ->join('statut_commande', 'commande.ID_STAT', '=', 'statut_commande.ID_STA')
+                        ->where('ID_CLI', $idCli)
+                        ->orderBy('DATE_COM')
+                        ->get();
         //return DB::select('select * from v_commande');
         //DB::view('v_commande')->get();
     }
