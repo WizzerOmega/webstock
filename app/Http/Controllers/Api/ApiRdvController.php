@@ -30,4 +30,15 @@ class ApiRdvController extends Controller
             200
         );
     }
+
+    public function getByRep($idRep)
+    {
+        $rdv = new Rdv;
+        $result = $rdv->getByRep($idRep);
+
+        return Response()->json(
+            $result->toArray(),
+            200
+        );
+    }
 }

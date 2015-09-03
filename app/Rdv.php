@@ -21,4 +21,9 @@ class Rdv extends Model
     {
         return Rdv::findOrFail($idRdv);
     }
+
+    public function getByRep($idRep)
+    {
+        return Rdv::where('ID_REP', '=', $idRep)->get();
+    }
 }

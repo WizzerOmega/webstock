@@ -18,7 +18,7 @@ Route::get('/', function () {
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
-Route::get('auth/logout', 'Auth\AuthController@getLogout');
+Route::get('auth/logout', ['uses' => 'Auth\AuthController@getLogout@edit', 'as' => 'logout']);
 
 Route::get('api/auth/x/{login}/y/{mdp}', 'Api\ApiAuthController@getByLoginMdp');
 
@@ -37,6 +37,7 @@ Route::get('api/produit/all/categ/{id}', 'Api\ApiProduitController@getAllByTypeP
 
 Route::get('api/rdv/all', 'Api\ApiRdvController@getAll');
 Route::get('api/rdv/{id}', 'Api\ApiRdvController@getById');
+Route::get('api/rdv/rep/{id}', 'Api\ApiRdvController@getByRep');
 Route::get('api/client/all', 'Api\ApiClientController@getAll');
 Route::get('api/client/{id}', 'Api\ApiClientController@getById');
 
@@ -63,7 +64,7 @@ Route::controllers([
 	'password' => 'Auth\PasswordController',
 ]);
 Route::resource('fournisseur', 'FournisseurController');
-Route::resource('commandeClient', 'CommandeClientController');
+Route::resource('commande', 'CommandeClientController');
 Route::resource('produit', 'ProduitController');
 Route::resource('matiere', 'MatiereController');
 Route::resource('stat', 'StatController');

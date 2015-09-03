@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
+use App\Client;
+use App\Commande;
 use App\Http\Controllers\Controller;
+use App\Http\Requests;
+use Illuminate\Http\Request;
 
 class CommandeClientController extends Controller
 {
@@ -16,7 +17,9 @@ class CommandeClientController extends Controller
      */
     public function index()
     {
-        //
+        $commande = new Commande;
+        $commandes = $commande->getAll();
+        return view('commande.index')->with('commandes', $commandes);
     }
 
     /**
@@ -50,13 +53,13 @@ class CommandeClientController extends Controller
     {
         $cmd = new Commande;
         $detailCom = $cmd->find($id);
-        $cmdClis = $cmdCli->getProduitCommande($id);
+        /*$cmdClis = $cmd->getProduitCommande($id);
         $client = new Client;
         $detailCli = $client->getById($idCli);
-        return View::make('commandecli.show')
+        return View::make('commande.show')
                             ->with('detailCom', $detailCom)
                             ->with('cmdClis', $cmdClis)
-                            ->with('detailCli', $detailCli);
+                            ->with('detailCli', $detailCli);*/
     }
 
     /**

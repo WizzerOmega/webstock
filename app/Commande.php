@@ -13,9 +13,10 @@ class Commande extends Model
 
     public function getAll()
     {
-        return Commande::all();
-        //return DB::select('select * from v_commande');
-        //DB::view('v_commande')->get();
+        return DB::table('commande')
+                        ->join('statut_commande', 'commande.ID_STAT', '=', 'statut_commande.ID_STA')
+                        ->orderBy('DATE_COM')
+                        ->get();
     }
 
     public function getById($idCmd)
@@ -43,18 +44,14 @@ class Commande extends Model
                         ->where('ID_CLI', $idCli)
                         ->orderBy('DATE_COM')
                         ->get();
-        //return DB::select('select * from v_commande');
-        //DB::view('v_commande')->get();
     }
 
     public function getProduitByCmd($idCmd)
     {
         return DB::table('commande')
-            ->from($this->table)
             ->join('associer', 'associer.id_com_cli', '=', 'commande.id_com_cli')
             ->join('produit', 'produit.id_prod', '=', 'associer.id_prod')
             ->where('commande.id_com_cli', '=', $idCmd)
             ->get();
     }
-
 }

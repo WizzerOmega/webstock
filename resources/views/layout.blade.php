@@ -18,27 +18,19 @@
 		<nav class="nav">
 			<div class="navbar-header">
 				<a href="#">
-				{!! HTML::image('/img/webstock.jpg', 'alt', array( 'width' => 250, 'height' => 75 )) !!}
+				{!! HTML::image('/img/webstock.png', 'alt', array( 'width' => 250, 'height' => 75 )) !!}
 				</a>
 			</div>
 			<ul class="nav nav-tabs navbar-nav navbar-right navbar-collapse">
-				<li class="dropdown" role="presentation">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Client<strong class="caret"></strong></a>
-					<ul class="dropdown-menu">
-						<li><a href="{{ URL::route('client.index') }}">Liste des clients</a></li>
-						<li><a href="{{ URL::route('client.create') }}">Nouveau client</a></li>
-					</ul>
-				</li>
-				<li class="dropdown" role="presentation">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Client<strong class="caret"></strong></a>
-					<ul class="dropdown-menu">
-						<li><a href="{{ URL::route('client.index') }}">Liste des clients</a></li>
-						<li><a href="{{ URL::route('client.create') }}">Nouveau client</a></li>
-					</ul>
-				</li>
+				@if (Auth::check())
+					<li class="dropdown" role="presentation">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }}<strong class="caret"></strong></a>
+						<ul class="dropdown-menu">
+							<li><a href="{{ URL::route('logout') }}">Déconnexion</a></li>
+						</ul>
+					</li>
+				@endif
 			</ul>
-
-
 		</nav>
 		<div class="container-fluid">
 			<div class="row">
@@ -52,9 +44,11 @@
 						<li><a href="{{ URL::route('produit.create') }}">Nouveau produit</a></li>
 						<li><a href="{{ URL::route('matiere.index') }}">Liste des matières</a></li>
 						<li><a href="{{ URL::route('matiere.create') }}">Nouvelle matière</a></li>
+						<li><a href="{{ URL::route('commande.index') }}">Commandes clients</a></li>
+						<li><a href="{{ URL::route('commande.create') }}">Nouvelle commande</a></li>
 					</ul>
 				</div>
-				<div class="col-sm-9 col-md-8" style="padding: 20px;">
+				<div class="col-sm-9 col-md-10" style="padding: 20px;">
 					@include('flash')
 					@yield('content')
 				</div>
