@@ -40,6 +40,8 @@ Route::get('api/rdv/{id}', 'Api\ApiRdvController@getById');
 Route::get('api/rdv/rep/{id}', 'Api\ApiRdvController@getByRep');
 Route::get('api/client/all', 'Api\ApiClientController@getAll');
 Route::get('api/client/{id}', 'Api\ApiClientController@getById');
+Route::get('api/representant/all', 'Api\ApirepresentantController@getAll');
+Route::get('api/representant/{id}', 'Api\ApirepresentantController@getById');
 
 Route::get('matiere/association', 'MatiereController@association');
 

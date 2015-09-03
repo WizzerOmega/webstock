@@ -14,6 +14,7 @@
 				<th>Email</th>
 				<th>Téléphone</th>
 				<th>Fax</th>
+				<th>Détail</th>
 				<th>Modifier</th>
 				<th>Supprimer</th>
 			</tr>

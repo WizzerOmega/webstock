@@ -5,31 +5,27 @@
 			<thead>
 				<tr>
 					<th>Numéro commande</th>
-					<th>Raison sociale</th>
-					<th>Adresse 1</th>
-					<th>Adresse 2</th>
-					<th>Adresse 3</th>
-					<th>Code postal</th>
-					<th>Ville</th>
-					<th>Email</th>
-					<th>Téléphone</th>
-					<th>Fax</th>
-					<th>Modifier</th>
-					<th>Supprimer</th>
+					<th>Date création</th>
+					<th>Date livraison</th>
+					<th>Statut</th>
 				</tr>
 			</thead>
 			<tbody>
 				@foreach($commandes as $commande)
 					<tr>
-						<td>{{ $commande->ID_COM }}</td>
 						<td>{{ $commande->NUM_COM }}</td>
-						<td>{{ $commande->DATE_COM }}</td>
-						<td>{{ $commande->DATE_LIVRAISON_COM }}</td>
+						<td>{{ date('j / m / Y', strtotime($commande->DATE_COM)) }}</td>
+						<td>{{ date('j / m / Y', strtotime($commande->DATE_LIVRAISON_COM)) }}</td>
 						<td>{{ $commande->LIB_STA }}</td>
 					</tr>
 				@endforeach
 			</tbody>
 		</table> 
+	</div>
+			<div class="text-left" style="padding-left: 20px;">
+		<a href="javascript:history.back()" class="btn btn-info">
+			<span class="glyphicon glyphicon-arrow-left"></span> Retour
+		</a>
 	</div>
 @stop
 

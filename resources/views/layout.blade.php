@@ -22,6 +22,48 @@
 				</a>
 			</div>
 			<ul class="nav nav-tabs navbar-nav navbar-right navbar-collapse">
+				<li class="dropdown" role="presentation">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Fournisseurs<strong class="caret"></strong></a>
+					<ul class="dropdown-menu">
+						<li><a href="{{ URL::route('fournisseur.index') }}">Liste des fournisseurs</a></li>
+						<li><a href="{{ URL::route('fournisseur.create') }}">Nouveau fournisseur</a></li>
+					</ul>
+				</li>
+				<li class="dropdown" role="presentation">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Clients<strong class="caret"></strong></a>
+					<ul class="dropdown-menu">
+						<li><a href="{{ URL::route('client.index') }}">Liste des clients</a></li>
+						<li><a href="{{ URL::route('client.create') }}">Nouveau client</a></li>
+					</ul>
+				</li>
+				<li class="dropdown" role="presentation">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Produits<strong class="caret"></strong></a>
+					<ul class="dropdown-menu">
+						<li><a href="{{ URL::route('produit.index') }}">Liste des produits</a></li>
+						<li><a href="{{ URL::route('produit.create') }}">Nouveau produit</a></li>
+					</ul>
+				</li>
+				<li class="dropdown" role="presentation">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Matières<strong class="caret"></strong></a>
+					<ul class="dropdown-menu">
+						<li><a href="{{ URL::route('matiere.index') }}">Liste des matières</a></li>
+						<li><a href="{{ URL::route('matiere.create') }}">Nouvelle matière</a></li>
+					</ul>
+				</li>
+				<li class="dropdown" role="presentation">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Commandes<strong class="caret"></strong></a>
+					<ul class="dropdown-menu">
+						<li><a href="{{ URL::route('commande.index') }}">Commandes clients</a></li>
+						<li><a href="{{ URL::route('commande.create') }}">Nouvelle commande</a></li>
+					</ul>
+				</li>
+				<li class="dropdown" role="presentation">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Fournisseurs<strong class="caret"></strong></a>
+					<ul class="dropdown-menu">
+						<li><a href="{{ URL::route('fournisseur.index') }}">Liste des fournisseurs</a></li>
+						<li><a href="{{ URL::route('fournisseur.create') }}">Nouveau fournisseur</a></li>
+					</ul>
+				</li>
 				@if (Auth::check())
 					<li class="dropdown" role="presentation">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }}<strong class="caret"></strong></a>
@@ -34,21 +76,7 @@
 		</nav>
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-sm-3 col-md-2" style="padding: 20px;">
-					<ul class="nav nav-sidebar">
-						<li><a href="{{ URL::route('fournisseur.index') }}">Liste des fournisseurs</a></li>
-						<li><a href="{{ URL::route('fournisseur.create') }}">Nouveau fournisseur</a></li>
-						<li><a href="{{ URL::route('client.index') }}">Liste des clients</a></li>
-						<li><a href="{{ URL::route('client.create') }}">Nouveau client</a></li>
-						<li><a href="{{ URL::route('produit.index') }}">Liste des produits</a></li>
-						<li><a href="{{ URL::route('produit.create') }}">Nouveau produit</a></li>
-						<li><a href="{{ URL::route('matiere.index') }}">Liste des matières</a></li>
-						<li><a href="{{ URL::route('matiere.create') }}">Nouvelle matière</a></li>
-						<li><a href="{{ URL::route('commande.index') }}">Commandes clients</a></li>
-						<li><a href="{{ URL::route('commande.create') }}">Nouvelle commande</a></li>
-					</ul>
-				</div>
-				<div class="col-sm-9 col-md-10" style="padding: 20px;">
+				<div class="col-sm-12 col-md-12" style="padding: 20px;">
 					@include('flash')
 					@yield('content')
 				</div>

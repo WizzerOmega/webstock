@@ -13,8 +13,6 @@ class Rdv extends Model
     public function getAll()
     {
         return Rdv::all();
-        //return DB::select('select * from v_commande');
-        //DB::view('v_commande')->get();
     }
 
     public function getById($idRdv)

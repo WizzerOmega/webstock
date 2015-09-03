@@ -28,4 +28,9 @@
 			 @endforeach
 		</tbody>
 	</table>
+	<div class="text-left">
+		<a href="javascript:history.back()" class="btn btn-info">
+			<span class="glyphicon glyphicon-arrow-left"></span> Retour
+		</a>
+	</div>
 @stop
